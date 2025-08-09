@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Click to Change Color</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: white; /* initial */
+      cursor: pointer;
+    }
+    /* Avoid selection highlight on double click */
+    body { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+  </style>
+</head>
+<body>
+  <script>
+    (function () {
+      const colors = ["white", "green", "red", "orange", "yellow", "black"]; // sequence
+      let index = 0; // starts at white
+
+      // Ensure initial background is explicitly set
+      document.body.style.backgroundColor = colors[index];
+
+      document.body.addEventListener("click", function () {
+        if (index < colors.length - 1) {
+          index += 1;
+          document.body.style.backgroundColor = colors[index];
+        }
+        // When black is reached, further clicks do nothing (per requested sequence)
+      });
+    })();
+  </script>
+</body>
+</html>
